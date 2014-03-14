@@ -11,18 +11,14 @@ class Imask
 
     /**
      * Renseigne les informations relative à l'image à utiliser
-     * @example array(array('image_1'=>array('src' => 'image_1.jpg','width'=>100,'height'=>120, 'ref_mask' => array('width'=>100,'height'=>120)))) OR array('image_1'=>array('src' => 'image_1.jpg','width'=>100,'height'=>120, 'ref_mask' => array('width'=>100,'height'=>120)))
+     * @example array('image_1'=>array('src' => 'image_1.jpg','width'=>100,'height'=>120, 'ref_mask' => array('width'=>100,'height'=>120))) OR array('image_1'=>array('src' => 'image_1.jpg','width'=>100,'height'=>120, 'ref_mask' => array('width'=>100,'height'=>120)))
      * @param type $a_config_image
      * @return \Imagsk
      */
     public function set_a_config_image(array $a_config_image)
     {
-        $nb_array = sizeof($a_config_image);
-
-        foreach ($a_config_image as $key => $value) {
-            if($nb_array > 1 && is_array($value))
-                $this->a_config_image = array_merge($this->a_config_image,$value);
-            else
+        foreach ($a_config_image as $key => $value)
+        {
                 $this->a_config_image[$key] = $value;
         }
 
@@ -37,13 +33,8 @@ class Imask
      */
     public function set_a_range(array $a_range)
     {
-        $nb_array = sizeof($a_range);
-
         foreach ($a_range as $key => $value) {
-            if($nb_array > 1 && is_array($value))
-                $this->a_range = array_merge($this->a_range,$value);
-            else
-                $this->a_range[$key] = $value;
+           $this->a_range[$key] = $value;
         }
 
         return $this;
@@ -255,20 +246,20 @@ $imask = new Imask();
 
 // On configure les masques (taille du contener) de l'image à placer
 $a_range = array(
-    array('masque1' => array('width'=>254,'height' => 142)),
-    array('masque2' => array('width'=>142,'height' => 254)),
-    array('masque3' => array('width'=>250,'height' => 250))
+    'masque1' => array('width'=>254,'height' => 142),
+    'masque2' => array('width'=>142,'height' => 254),
+    'masque3' => array('width'=>250,'height' => 250)
 );
 $imask->set_a_range($a_range);
 
 // On configure les images
 $a_image = array(
-   array('loremH_142x254' => array('src'=> 'loremH_142x254.png', 'width' => 218, 'height' => 254, 'ref_mask' => array('width'=>142,'height'=>254))),
-   array('loremH_250x250' => array('src'=> 'loremH_250x250.png', 'width' => 250, 'height' => 291, 'ref_mask' => array('width'=>250,'height'=>250))),
-   array('loremH_254x142' => array('src'=> 'loremH_254x142.png', 'width' => 254, 'height' => 296, 'ref_mask' => array('width'=>254,'height'=>142))),
-   array('loremL_142x254' => array('src'=> 'loremL_142x254.jpg', 'width' => 448, 'height' => 254, 'ref_mask' => array('width'=>142,'height'=>254))),
-   array('loremL_250x250' => array('src'=> 'loremL_250x250.jpg', 'width' => 441, 'height' => 250, 'ref_mask' => array('width'=>250,'height'=>250))),
-   array('loremL_254x142' => array('src'=> 'loremL_254x142.jpg', 'width' => 254, 'height' => 144, 'ref_mask' => array('width'=>254,'height'=>142))),
+   'loremH_142x254' => array('src'=> 'loremH_142x254.png', 'width' => 218, 'height' => 254, 'ref_mask' => array('width'=>142,'height'=>254)),
+   'loremH_250x250' => array('src'=> 'loremH_250x250.png', 'width' => 250, 'height' => 291, 'ref_mask' => array('width'=>250,'height'=>250)),
+   'loremH_254x142' => array('src'=> 'loremH_254x142.png', 'width' => 254, 'height' => 296, 'ref_mask' => array('width'=>254,'height'=>142)),
+   'loremL_142x254' => array('src'=> 'loremL_142x254.jpg', 'width' => 448, 'height' => 254, 'ref_mask' => array('width'=>142,'height'=>254)),
+   'loremL_250x250' => array('src'=> 'loremL_250x250.jpg', 'width' => 441, 'height' => 250, 'ref_mask' => array('width'=>250,'height'=>250)),
+   'loremL_254x142' => array('src'=> 'loremL_254x142.jpg', 'width' => 254, 'height' => 144, 'ref_mask' => array('width'=>254,'height'=>142)),
 );
 //$a_image = array('loremH_142x254' => array('src'=> 'loremH_142x254.png', 'width' => 218, 'height' => 254));
 $imask->set_a_config_image($a_image);
