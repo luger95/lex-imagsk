@@ -1,6 +1,6 @@
 <?php
 
-class Imagsk
+class Imask
 {
     protected $a_config_image = array();
     protected $a_range = array();
@@ -251,7 +251,7 @@ class Imagsk
 *******************************************************************************/
 
 // On créer notre objet
-$imagsk = new Imagsk();
+$imask = new Imask();
 
 // On configure les masques (taille du contener) de l'image à placer
 $a_range = array(
@@ -259,7 +259,7 @@ $a_range = array(
     array('masque2' => array('width'=>142,'height' => 254)),
     array('masque3' => array('width'=>250,'height' => 250))
 );
-$imagsk->set_a_range($a_range);
+$imask->set_a_range($a_range);
 
 // On configure les images
 $a_image = array(
@@ -271,14 +271,14 @@ $a_image = array(
    array('loremL_254x142' => array('src'=> 'loremL_254x142.jpg', 'width' => 254, 'height' => 144, 'ref_mask' => array('width'=>254,'height'=>142))),
 );
 //$a_image = array('loremH_142x254' => array('src'=> 'loremH_142x254.png', 'width' => 218, 'height' => 254));
-$imagsk->set_a_config_image($a_image);
+$imask->set_a_config_image($a_image);
 
 // On lance le script
-$imagsk->run();
+$imask->run();
 
 // On récupère les données
-$a_ranges = $imagsk->get_range();
-$a_images = $imagsk->get_image();
+$a_ranges = $imask->get_range();
+$a_images = $imask->get_image();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
