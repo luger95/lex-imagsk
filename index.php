@@ -125,48 +125,11 @@ class Imask
      */
     protected function container(array $a_rang,array $a_image)
     {
-        $css_result = 'position:absolute;';
-
-        switch ($a_rang['type']) {
-            case 'width': // Masque large
-                $top = $this->calc_top_left($a_image['height'],$a_rang['height']);
-
-                $width = $this->calc_width_height($a_image['width'], $a_rang['width']);
-                $height = $this->calc_width_height($a_image['height'], $a_rang['height']);
-                $css_result.= "left:0;top:-{$top}px;left:0;width:{$width}px;height:{$height}px";
-            break;
-            case 'height': // masque haut
-                $left = $this->calc_top_left($a_image['width'],$a_rang['width']);
-                $width = $this->calc_width_height($a_image['width'], $a_rang['width']);
-                $height = $this->calc_width_height($a_image['height'], $a_rang['height']);
-                $css_result.= "left:0;left:-{$left}px;top:0;width:{$width}px;height:{$height}px";
-            break;
-            case 'square': // masque carré
-                if($a_image['width'] < $a_image['height']) // Image haute
-                {
-                    $top = $this->calc_top_left($a_image['height'],$a_rang['height']);
-                    $left = 0;
-                    $width = $a_rang['width'];
-                    $height = $this->calc_width_height($a_image['height'], $a_rang['height']);
-                }
-                elseif($a_image['width'] > $a_image['height']) // image large
-                {
-                    $top = 0;
-                    $left = $this->calc_top_left($a_image['width'],$a_rang['width']);
-                    $width = $this->calc_width_height($a_image['width'], $a_rang['width']);
-                    $height = $a_rang['height'];
-                }
-                else // Image carré
-                {
-                    $top = $this->calc_top_left($a_image['height'],$a_rang['height']);
-                    $left = $this->calc_top_left($a_image['width'],$a_rang['width']);
-                    $width = $a_image['width'];
-                    $height = $a_image['height'];
-                }
-                
-                $css_result.= "left:0;left:-{$left}px;top:-{$top}px;width:{$width}px;height:{$height}px";
-            break;
-        }
+        $top = $this->calc_top_left($a_image['height'],$a_rang['height']);
+        $left = $this->calc_top_left($a_image['width'],$a_rang['width']);
+        $width = $this->calc_width_height($a_image['width'], $a_rang['width']);
+        $height = $this->calc_width_height($a_image['height'], $a_rang['height']);
+        $css_result = "{$this->container_style_default}left:-{$left}px;top:-{$top}px;width:{$width}px;height:{$height}px";
 
         return $css_result;
     }
